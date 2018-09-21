@@ -17,8 +17,8 @@
       k8s:
         state: absent
         definition: "{{ lookup('template', item) | from_yaml }}"
-        verify_ssl: no
-        api_key: "{{ api_key }}"
+      verify_ssl: no
+      api_key: "{{ api_key }}"
       loop:
         - pvc.yaml.j2
         - deployment.yaml.j2
@@ -32,8 +32,8 @@
   k8s:
     state: "{{ state }}"
     definition: "{{ lookup('template', item.name) | from_yaml }}"
-    verify_ssl: no
-    api_key: "{{ api_key }}"
+  verify_ssl: no
+  api_key: "{{ api_key }}"
   when: item.apply | default(True)
   loop:
     - name: service.yaml.j2
